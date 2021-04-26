@@ -68,7 +68,7 @@
   <div class="container bg-light py-2 rounded">
     <div class="col-md-7 col-lg-8">
       <h4 class="mb-3">Votre adresse de livraison</h4>
-      <form id="myForm">
+      <form name="myForm">
         <div class="row g-3">
           <div class="col-sm-6">
             <label for="firstName" class="form-label">NOM</label>
@@ -86,7 +86,7 @@
             </div>
           </div>
 
-          <!-- <div class="col-12">
+          <div class="col-12">
             <label for="email" class="form-label">Email</label>
             <input type="email" class="form-control" id="email" placeholder="you@example.com">
             <div class="invalid-feedback">
@@ -95,6 +95,16 @@
           </div>
 
           <div class="col-12">
+            <label for="email2" class="form-label">Email confirmation</label>
+            <input type="email" class="form-control" id="email2" placeholder="you@example.com">
+            <div class="invalid-feedback">
+              Une adresse mail pour la confirmation et le récapitulatif de votre commande.
+            </div>
+          </div>
+
+          <p style="color: red" id="erreur"></p>
+
+         <!--  <div class="col-12">
             <label for="address" class="form-label">Adresse</label>
             <input type="text" class="form-control" id="address" placeholder="(Impasse, Bâtiment, N° rue ...)"
               required="">
