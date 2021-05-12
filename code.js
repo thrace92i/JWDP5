@@ -57,6 +57,25 @@
 
 // Traitement de la confirmation de deux adresses mails similaires
 
+fetch ("http://localhost:3000/api/cameras")
+    .then(function(res){
+        if(res.ok){
+            return res.json();
+        }
+    })
+    .then(function(value){
+        // console.log(value[0]['name']);
+        let testJs =   document.getElementById('testJs').innerHTML = value[0]['name'];
+    })
+    .catch(function(err){
+
+    });
+
+
+
+
+// Questionnaire 
+
 document.getElementById("email2").addEventListener("input", function(){
     var paragrapheErreur = document.getElementById("erreur");
     if (this.value != document.getElementById("email").value) {

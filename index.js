@@ -1,0 +1,1 @@
+// Création de la fonction pour afficher les produits sur la Page d'acceuil
