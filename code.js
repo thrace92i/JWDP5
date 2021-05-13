@@ -57,62 +57,62 @@
 
 // Traitement de la confirmation de deux adresses mails similaires
 
-fetch ("http://localhost:3000/api/cameras")
-    .then(function(res){
-        if(res.ok){
-            return res.json();
-        }
-    })
-    .then(function(value){
-        // console.log(value[0]['name']);
-        let testJs =   document.getElementById('testJs').innerHTML = value[0]['name'];
-    })
-    .catch(function(err){
+// fetch ("http://localhost:3000/api/cameras")
+//     .then(function(res){
+//         if(res.ok){
+//             return res.json();
+//         }
+//     })
+//     .then(function(value){
+//         // console.log(value[0]['name']);
+//         let testJs =   document.getElementById('testJs').innerHTML = value[0]['name'];
+//     })
+//     .catch(function(err){
 
-    });
-
-
+//     });
 
 
-// Questionnaire 
 
-document.getElementById("email2").addEventListener("input", function(){
-    var paragrapheErreur = document.getElementById("erreur");
-    if (this.value != document.getElementById("email").value) {
-        paragrapheErreur.innerHTML = "Les deux adresses mails ne correspondent pas";
-    } else {
-        paragrapheErreur.innerHTML = "";
-    }
+
+// // Questionnaire 
+
+// document.getElementById("email2").addEventListener("input", function(){
+//     var paragrapheErreur = document.getElementById("erreur");
+//     if (this.value != document.getElementById("email").value) {
+//         paragrapheErreur.innerHTML = "Les deux adresses mails ne correspondent pas";
+//     } else {
+//         paragrapheErreur.innerHTML = "";
+//     }
     
-});
+// });
 
-document.forms["myForm"].addEventListener("submit", function(e){
+// document.forms["myForm"].addEventListener("submit", function(e){
 
-    var erreur;
+//     var erreur;
 
-    var inputs = this;
+//     var inputs = this;
 
-    // Traitement au cas par cas des inputs
+//     // Traitement au cas par cas des inputs
 
-    // if (inputs["email"].value != "p.f@gmail.com"){
-    //     erreur = "Adresse email incorrecte";
-    // }
+//     // if (inputs["email"].value != "p.f@gmail.com"){
+//     //     erreur = "Adresse email incorrecte";
+//     // }
 
-    // Traitement générique
+//     // Traitement générique
 
-    for (var i = 0; i < inputs.length; i++) {
-        if (!inputs[i].value){
-            erreur = "Veuillez renseigner les champs ci-dessus !"
-            break;
-        }
-    }
+//     for (var i = 0; i < inputs.length; i++) {
+//         if (!inputs[i].value){
+//             erreur = "Veuillez renseigner les champs ci-dessus !"
+//             break;
+//         }
+//     }
 
-    if (erreur) {
-        e.preventDefault();
-        document.getElementById("erreur").innerHTML = erreur;
-        return false;
-    } else {
-        alert('Paiment confirmé')
-    }
-});
+//     if (erreur) {
+//         e.preventDefault();
+//         document.getElementById("erreur").innerHTML = erreur;
+//         return false;
+//     } else {
+//         alert('Paiment confirmé')
+//     }
+// });
 

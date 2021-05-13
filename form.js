@@ -1,0 +1,1 @@
+// Création de la fonction pour valider et sécuriser le questionnaire lors du paiement
