@@ -1,4 +1,6 @@
 // Création de la fonction pour afficher les produits sur la Page d'acceuil
+
+// Création de mes variables
 const affichageProduitIndex = document.getElementById("affichageProduit");
 const image = document.querySelector(".imgProduit");
 const nom = document.querySelector(".nomProduit");
@@ -6,14 +8,16 @@ const id = document.querySelector(".idProduit");
 const description = document.querySelector(".descriptionProduit");
 const prix = document.querySelector(".prixProduit");
 
+// Test de mes variables
 console.log(affichageProduitIndex);
-// Connexion à l'API via la méthode fetch pour les données au format JSON
 
+// Connexion à l'API via la méthode fetch pour les données au format JSON
 fetch("http://localhost:3000/api/cameras")
-  .then((data) => data.json())
-  .then(jsonListProduits => {
-    for (const jsonProduits of jsonListProduits) {
-        let produit = new Produit(jsonProduits)
+  .then((data) => data.json()) /* Récupérération des données au format JSON */
+  .then(jsonListProduits => { /* Inscription des données dans jsonlistProduits */
+    for (const jsonProduits of jsonListProduits) { /* Transfert des données JSON dans class Produit avec le constructeur et this */
+        let produit = new Produit(jsonProduits) /* Création variable de la classe Produit récupérant les données */
+        /* Affichage des produits sur l'index HTML avec template */
         document.querySelector("#affichageProduit").innerHTML += `<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 m-3">
                                                                         <div class="col-sm-12 col-md-12 col-lg-12">
                                                                         <div class="card shadow-sm">
@@ -49,6 +53,7 @@ fetch("http://localhost:3000/api/cameras")
      })   
     });
 
+/* Création d'une Classe produit pour y associer chaque élément de l'API JSON  */
   class Produit {
       constructor(jsonProduits){
           jsonProduits && Object.assign(this, jsonProduits);
