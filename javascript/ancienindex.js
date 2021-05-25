@@ -15,7 +15,7 @@ console.log(affichageProduitIndex);
 fetch("http://localhost:3000/api/cameras")
   .then((data) => data.json()) /* Récupérération des données au format JSON */
   .then(jsonListProduits => { /* Inscription des données dans jsonlistProduits */
-    for (const jsonProduits of jsonListProduits) { /* Transfert des données JSON dans class Produit avec le constructeur et this */
+    for (const jsonProduits of jsonListProduits) { /* Transfert des données JSON dans class Produit avec le constructeur et this avec Boucle for of */
         let produit = new Produit(jsonProduits) /* Création variable de la classe Produit récupérant les données */
         /* Affichage des produits sur l'index HTML avec template */
         document.querySelector("#affichageProduit").innerHTML += `<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 m-3">
@@ -46,14 +46,15 @@ fetch("http://localhost:3000/api/cameras")
                                                                         </div>
                                                                     </div> `;
     }
-     document.querySelectorAll(".ajoutPanier").forEach(panier => {
-         panier.addEventListener("click", function() {
+    /* Sélection des boutons pour ajouter au panier et mise en place d'une boucle qui ajoute au LocalStorage les produits selon leur ID */ 
+    document.querySelectorAll(".ajoutPanier").forEach(panier => { /* boucle forEach */
+         panier.addEventListener("click", function() { /* ajout de l'évènement click sur les boutons Ajouter au panier */
             ajouterPanier(this.dataset.id);
          })
      })   
     });
 
-/* Création d'une Classe produit pour y associer chaque élément de l'API JSON  */
+/* Création d'une Classe Produit pour y associer chaque élément de l'API JSON  */
   class Produit {
       constructor(jsonProduits){
           jsonProduits && Object.assign(this, jsonProduits);
@@ -61,9 +62,11 @@ fetch("http://localhost:3000/api/cameras")
       }
   }
 
+/* Création d'une Class RecuperationProduits  */
   class RecuperationProduits {
       constructor(listeProduits) {
           this.listeProduits = listeProduits;
       }
   }
   
+  fetch("http://localhost:3000/api/camera/}")
