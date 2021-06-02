@@ -37,6 +37,15 @@ paiementForm.email2.addEventListener('change', function(){
     validerEmail2(this);
 });
 
+paiementForm.adresse.addEventListener('change', function(){
+    validerAdresse(this);
+});
+
+paiementForm.departement.addEventListener('change', function(){
+    validerDepartement(this);
+});
+
+
 paiementForm.cp.addEventListener('change', function(){
     validerCp(this);
 });
@@ -148,7 +157,31 @@ const validerEmail2 = function() {
     }
 };
 
-//
+// ***** CHAMP ADRESSE *****
+// A Retravailler
+
+const validerAdresse = function(champAdresse) {
+    /* Création de la regEx pour la validation de l'adresse*/
+    // tester sur le texte fait bien entre 4 et 128 caractères
+
+    let adresseRegExp = new RegExp('^(.){4,128}$', 'g');
+
+    /* Tester si l'adresse utilisateur est validé avec l'expression régulière */
+
+    let testAdresse = adresseRegExp.test(champAdresse.value);
+    let adresseMessage = champAdresse.nextElementSibling;
+    
+
+    if(testAdresse !== true){
+        adresseMessage.innerHTML = "Veuillez vérifier votre adresse";
+        adresseMessage.classList.add('text-danger');
+        return false;
+    }else{
+        adresseMessage.classList.add('d-none');
+        return true;
+    }
+    
+};
 
 // ***** CHAMP CP *****
 
@@ -169,6 +202,29 @@ const validerCp = function(champCp) {
     }else{
         cpMessage.classList.add('d-none');
         return true;
+    }
+    
+};
+
+// ***** CHAMP DEPARTEMENT *****
+
+const validerDepartement = function(champDepartement) {
+    /* Création de la regEx pour la validation du CP*/
+    let departementRegExp = new RegExp('/^0[1-9]|[1-8][0-9]|9[0-8]|2A|2B$/', 'g');
+
+    /* Tester si le Code postal utilisateur est validé avec l'expression régulière */
+
+    let testDepartement = departementRegExp.test(champDepartement.value);
+    let departementMessage = champDepartement.nextElementSibling;
+    
+
+    if(testDepartement == true){
+        departementMessage.classList.add('d-none');
+        return true;
+    }else{
+        departementMessage.innerHTML = "Département incorrecte";
+        departementMessage.classList.add('text-danger');
+        return false;
     }
     
 };
