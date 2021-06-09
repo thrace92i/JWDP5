@@ -50,7 +50,32 @@ paiementForm.cp.addEventListener('change', function(){
     validerCp(this);
 });
 
+paiementForm.prenomcb.addEventListener('change',  function(){
+    validerPrenomCb(this);
+});
 
+paiementForm.nomcb.addEventListener('change',  function(){
+    validerNomCb(this);
+});
+
+paiementForm.numcb.addEventListener('change',  function(){
+    validerCodeCb(this);
+});
+
+paiementForm.codesecucb.addEventListener('change', function(){
+    validerCVC(this);
+});
+
+/* Ecouter la soumission du formulaire */
+paiementForm.addEventListener('submit', function(e){
+    e.preventDefault();
+    if(validerNom(paiementForm.nom) && validerPrenom(paiementForm.prenom) && validerEmail(paiementForm.email) && validerEmail2(paiementForm.email2) && validerAdresse(paiementForm.adresse) && validerDepartement(paiementForm.departement) && validerCp(paiementForm.cp) && validerPrenomCb(paiementForm.prenomcb) && validerNomCb(paiementForm.nomcb) && validerCodeCb(paiementForm.numcb) && validerCVC(paiementForm.codesecucb) == true){
+        paiementForm.submit();
+        alert('Votre paiement à été accepté')
+    }else{
+        alert('Veuilliez vérifier les champs que vous avez rentré.')
+    }
+});
 // ********* VALIDATION DES CHAMPS *********
 // ***** CHAMP NOM *****
 
@@ -163,6 +188,8 @@ const validerEmail2 = function() {
 const validerAdresse = function(champAdresse) {
     /* Création de la regEx pour la validation de l'adresse*/
     // tester sur le texte fait bien entre 4 et 128 caractères
+    //Case pour numéro, chiffre ou rien, du tout
+    //Case pour adresse avec que des lettres
 
     let adresseRegExp = new RegExp('^(.){4,128}$', 'g');
 
@@ -187,6 +214,7 @@ const validerAdresse = function(champAdresse) {
 
 const validerCp = function(champCp) {
     /* Création de la regEx pour la validation du CP*/
+    // Rajouter jusqu'à 6 caractères possibles
     let cpRegExp = new RegExp('^((0[1-9])|([1-8][0-9])|(9[0-8])|(2A)|(2B))[0-9]{3}$', 'g');
 
     /* Tester si le Code postal utilisateur est validé avec l'expression régulière */
@@ -209,10 +237,10 @@ const validerCp = function(champCp) {
 // ***** CHAMP DEPARTEMENT *****
 
 const validerDepartement = function(champDepartement) {
-    /* Création de la regEx pour la validation du CP*/
+    /* Création de la regEx pour la validation du CP, tiens en compte les départements comme Bastia avec lettre */
     let departementRegExp = new RegExp('/^0[1-9]|[1-8][0-9]|9[0-8]|2A|2B$/', 'g');
 
-    /* Tester si le Code postal utilisateur est validé avec l'expression régulière */
+    /* Tester si le département utilisateur est validé avec l'expression régulière */
 
     let testDepartement = departementRegExp.test(champDepartement.value);
     let departementMessage = champDepartement.nextElementSibling;
@@ -228,3 +256,93 @@ const validerDepartement = function(champDepartement) {
     }
     
 };
+
+// ***** PARTIE COORDONNEES BANCAIRES *****
+
+// ***** CHAMP PRENOM CB *****
+
+const validerPrenomCb = function (champPrenomCb) {
+    /* Création regExp pour valider le champ du prenom */
+    /* Je décide de garder la même regEx qu'utiliser pour le nom afin de vérifier */
+
+    let prenomCbRegeExp = new RegExp ("^[A-Z][A-Za-z\é\è\ê\-]+$", "g");
+
+    let testPrenomCb = prenomCbRegeExp.test(champPrenomCb.value);
+    let messagePrenomCb = champPrenomCb.nextElementSibling;
+
+    if(testPrenomCb == true){
+       messagePrenomCb.innerHTML = "Le prénom sur votre CB est valide";
+       messagePrenomCb.classList.remove('text-danger');
+       messagePrenomCb.classList.add('text-success');
+       return true;
+    }else{
+       messagePrenomCb.innerHTML = "Le prénom sur votre CB n'est pas valide";
+       messagePrenomCb.classList.remove('text-success');
+       messagePrenomCb.classList.add('text-danger');
+       return false;
+    }
+}
+
+// ***** CHAMP NOM CB *****
+
+const validerNomCb = function (champNomCb) {
+
+    /* Création regExp pour valider le champ du prenom */
+    /* Je décide de garder la même regEx qu'utiliser pour le nom afin de vérifier */
+
+    let nomCbRegeExp = new RegExp ("^[a-zA-Z '.-]*$", "g");
+
+    let testNomCb = nomCbRegeExp.test(champNomCb.value);
+    let messageNomCb = champNomCb.nextElementSibling;
+
+    if(testNomCb == true){
+        messageNomCb.innerHTML = "Le nom sur votre CB est valide";
+        messageNomCb.classList.remove('text-danger');
+        messageNomCb.classList.add('text-success');
+        return true;
+    }else{
+        messageNomCb.innerHTML = "Le nom sur votre CB n'est pas valide";
+        messageNomCb.classList.remove('text-success');
+        messageNomCb.classList.add('text-danger');
+        return false;
+    }
+}
+
+const validerCodeCb = function(champCodeCb) {
+    
+    let codeCbRegeExp = new RegExp("^5[1-5][0-9]{14}$", "g");
+
+    let testCodeCb = codeCbRegeExp.test(champCodeCb.value);
+    let messageCodeCb = champCodeCb.nextElementSibling;
+
+    if(testCodeCb == true){
+        messageCodeCb.innerHTML = "Votre code MasterCard est valide";
+        messageCodeCb.classList.remove('text-danger');
+        messageCodeCb.classList.add('text-success');
+        return true;
+    }else{
+        messageCodeCb.innerHTML = "Votre code MasterCard n'est pas valide";
+        messageCodeCb.classList.add('text-danger');
+        messageCodeCb.classList.remove('text-success');
+        return false;
+    }
+}
+
+const validerCVC = function(champCvc) {
+    let codeCvcRegeExp = new RegExp ("^[0-9]{3,4}$", "g");
+
+    let testCvc = codeCvcRegeExp.test(champCvc.value);
+    let messageCvc = champCvc.nextElementSibling;
+
+    if (testCvc == true){
+        messageCvc.innerHTML = "CVC valide";
+        messageCvc.classList.remove('text-danger');
+        messageCvc.classList.add('text-success');
+        return true;
+    }else{
+        messageCvc.innerHTML = "CVC non valide ! Veuillez vérifier.";
+        messageCvc.classList.add('text-danger');
+        messageCvc.classList.remove('text-success');
+        return false;
+    }
+}
