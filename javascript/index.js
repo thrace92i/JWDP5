@@ -19,7 +19,7 @@ let urlApi = 'http://localhost:3000/api/cameras';
 fetch(urlApi)
     .then(response => response.json())
     .then(dataCameras => {
-        console.log(dataCameras);
+        // console.log(dataCameras);
         for (let cameras of dataCameras){
             affichageProduitIndex.innerHTML += `<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 m-3">
             <div class="col-sm-12 col-md-12 col-lg-12">
@@ -40,7 +40,7 @@ fetch(urlApi)
                 <div class="d-flex justify-content-center align-items-center">
                     <div class="btn-group">
                     <!-- Afficher la page du produit ZURSS 50S au clique sur le bouton -->
-                    <button type="button" class="btn btn-sm btn-outline-primary">En savoir plus</button>
+                    <a href="page.html?_id=${cameras._id}"  class="btn btn-sm btn-outline-primary pageCamera">En savoir plus</a>
                     <!-- Ajouter au panier le produit ZURSS 50S au clique sur le bouton -->
                     <button type="button" class="btn btn-sm btn-outline-success ajoutPanier"data-id ="${cameras._id}">Ajouter au panier</button>
                     </div>
@@ -68,4 +68,9 @@ fetch(urlApi)
     
 });
 
+// Création d'un lien vers produit.html pour chaque article
+// let lien = document.createElement('a');
+// lien.id = result[i].name;
+// let adresseLien = produit.html;
+// lien.setAttribute('href', 'produit.html?id='+id.cameras);
 
