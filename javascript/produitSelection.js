@@ -61,10 +61,10 @@ async function idProduitSelectionner() {
 
 }
 
-// this async function awaits for weather() to return
+// Cette fonction asynchrone attend le retour de la fonction asynchrone  idProduitSelectionner()
 async function run() {
     await idProduitSelectionner()
 }
 
-// this runs first
+// Cette fonction s'éxécute en premier
 run();

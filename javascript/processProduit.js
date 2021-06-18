@@ -18,17 +18,17 @@ let prix = document.querySelector('prixProduit');
 
 // Fonctio asynchrone fetch pour récupérer la page de la caméra avec son ID
 
-const getProduit = async function(){
-    try
+// const getProduit = async function(){
+//     try
 
-    let response = await fetch('http://localhost:3000/api/cameras'+ id);
-    if (response.ok) {
-        let cameras = await response.json() 
-    }
-    console.log(cameras instanceof Object)
-    prix.innerHTML = cameras.price;
+//     let response = await fetch('http://localhost:3000/api/cameras'+ id);
+//     if (response.ok) {
+//         let cameras = await response.json() 
+//     }
+//     console.log(cameras instanceof Object)
+//     prix.innerHTML = cameras.price;
 
-}
+// }
 
 btnValid.addEventListener('click', function(e){
     //Si le nombre total d'article est différent de 0 et strictement inférieur à 2 
