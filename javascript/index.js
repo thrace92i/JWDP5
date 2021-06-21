@@ -68,6 +68,7 @@ fetch(urlApi)
     
 });
 
+
 // Création d'un lien vers produit.html pour chaque article
 // let lien = document.createElement('a');
 // lien.id = result[i].name;

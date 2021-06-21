@@ -1,23 +1,23 @@
 // Création de la fonction pour ajouter les produits au panier
 
-function ajouterPanier(produitsId) {
-    let listPanier = getPanier();
-    listPanier.push(produitsId);
-    saveProduitsPanier(listPanier);
-}
+// function ajouterPanier(produitsId) {
+//     let listPanier = getPanier();
+//     listPanier.push(produitsId);
+//     saveProduitsPanier(listPanier);
+// }
 
-function getPanier() {
-    let listPanier = localStorage.getItem("listPanier");
-    if (listPanier == null) {
-        return [];
-    } else {
-        return JSON.parse(listPanier);
-    }
-}
+// function getPanier() {
+//     let listPanier = localStorage.getItem("listPanier");
+//     if (listPanier == null) {
+//         return [];
+//     } else {
+//         return JSON.parse(listPanier);
+//     }
+// }
 
-function saveProduitsPanier(listPanier) {
-    localStorage.setItem("listPanier", JSON.stringify(listPanier));
-}
+// function saveProduitsPanier(listPanier) {
+//     localStorage.setItem("listPanier", JSON.stringify(listPanier));
+// }
 
 // * @description Récupère l'id du produit dans du query string de l'URL et fait une requête a l'API par ID.
 //  * @returns l'objet du produit en JSON
@@ -32,3 +32,6 @@ function saveProduitsPanier(listPanier) {
 //   productObject = data;
 //   return data;
 // };
+
+
+    
