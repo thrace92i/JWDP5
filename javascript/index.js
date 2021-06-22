@@ -33,8 +33,6 @@ fetch(urlApi)
                 <!-- Afficher la description du produit ZURSS 50S "description" -->
                 <p class="card-text descriptionProduit">Description de la caméra ${cameras.name} : ${cameras.description}</p>
                 <!-- Afficher la description du produit ZURSS 50S "description" -->
-                <p class="card-text descriptionProduit">Les différents objectifs : ${cameras.lenses[0]}</p>
-                <div class="test"></div>
                 <!-- Afficher le prix du produit ZURSS 50S en euros "price" -->
                 <p class="prixProduit"><strong>${cameras.price / 100} € </strong></p>
                 <div class="d-flex justify-content-center align-items-center">
@@ -50,28 +48,11 @@ fetch(urlApi)
             </div>
         </div>; `;
 
-        // console.log(cameras.lenses[i]);
-        
-        const choixLentilles = (lenses) => {
-            let option = document.createElement('option');
-            let test = document.querySelector('.test')
-            option.setAttribute('value', choixLentilles);
-            option.innerHTML = choixLentilles;
-            option.appenChild(test);
         }
 
-
         
-        }
         
-
-    
 });
 
 
-// Création d'un lien vers produit.html pour chaque article
-// let lien = document.createElement('a');
-// lien.id = result[i].name;
-// let adresseLien = produit.html;
-// lien.setAttribute('href', 'produit.html?id='+id.cameras);
 

@@ -46,9 +46,6 @@ async function idProduitSelectionner() {
                                 <form class="card-body">
                                     <label for="lenses_cameras">Choisir l'objectif : </label>
                                         <select  name="lenses_cameras" id="lenses_cameras" > 
-                                            <option value="lenses_1">${idCameras.lenses[0]}</option>
-                                            <option value="lenses_2">${idCameras.lenses[1]}</option>
-                                            <option value="lenses_3">${idCameras.lenses[2]}</option>
                                         </select>
                                 </form>
                                 <div class="d-grid gap-2 col-md-3 offset-md-3 mx-auto">
@@ -61,13 +58,13 @@ async function idProduitSelectionner() {
                 //GESTION DU PANIER
                 //Sélection de l'ID du formulaire
                 let idForm = document.querySelector('#lenses_cameras')
-                console.log(idForm);
+                // console.log(idForm);
                 
 
                 //Sélection du bouton Ajouter l'article au panier
 
                 let btnPanier = document.querySelector('#btnPanier')
-                console.log(btnPanier);
+                // console.log(btnPanier);
 
                 //Ecouter le bouton et envoyer le panier
                 btnPanier.addEventListener("click", (e)=>{
@@ -75,11 +72,11 @@ async function idProduitSelectionner() {
 
                     //Mettre le choix de l'utilisateur dans une variable
 
-                    let choixObjectif = idForm.value;
+                let choixObjectif = idForm.value;
 
                      //Récupération des valeurs du formulaire
 
-                    let optionsCameras = {
+                let optionsCameras = {
                         imageCamera: idCameras.imageUrl,
                         nomCamera: idCameras.name,
                         idCamera: idCameras._id,
@@ -89,6 +86,26 @@ async function idProduitSelectionner() {
                     }
                     console.log(optionsCameras);
                 })
+
+                
+                //Le formulaire s'adapte au nombres d'objectifs possible pour une caméra
+                const quantiteObjectifs = idCameras.lenses;
+                let recupObjectif = [];
+
+                //Création boucle for pour afficher les objectifs possibles pour la caméra
+
+                for (let j = 0; j < quantiteObjectifs.length; j++){
+                    recupObjectif = recupObjectif + 
+                    `
+                    <option value="${j+1}">${quantiteObjectifs[j]}</option>
+                    `
+                    // console.log(recupObjectif);
+                }
+
+                //injection html des objectifs 
+                const affichageObjectif = document.querySelector('#lenses_cameras');
+                affichageObjectif.innerHTML = recupObjectif;
+                // console.log(affichageObjectif);
 
                
                 
@@ -107,9 +124,3 @@ async function run() {
 
 // Cette fonction s'éxécute en premier
 run();
-
-
-
-
-
-// Récupération des données sélectionnées par le client et envoie du panier
