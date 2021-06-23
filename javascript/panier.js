@@ -1,37 +1,38 @@
-// Création de la fonction pour ajouter les produits au panier
+let cameraEnregistrerDansLocalStorage = JSON.parse(localStorage.getItem("cameraPanier"));
+// JSON.parse permets de convertir les données au format JSON en Objet JS dans le LS
+console.log(cameraEnregistrerDansLocalStorage);
 
-// function ajouterPanier(produitsId) {
-//     let listPanier = getPanier();
-//     listPanier.push(produitsId);
-//     saveProduitsPanier(listPanier);
-// }
+// ------ AFFICHAGE DES CAMERAS DANS LE PANIER ------
+//Je sélectionne la classe où je veux injecte le code HTML
+const affichageProduitPanier = document.querySelector("#container-produits-panier");
+// console.log(affichageProduitPanier);
 
-// function getPanier() {
-//     let listPanier = localStorage.getItem("listPanier");
-//     if (listPanier == null) {
-//         return [];
-//     } else {
-//         return JSON.parse(listPanier);
-//     }
-// }
-
-// function saveProduitsPanier(listPanier) {
-//     localStorage.setItem("listPanier", JSON.stringify(listPanier));
-// }
-
-// * @description Récupère l'id du produit dans du query string de l'URL et fait une requête a l'API par ID.
-//  * @returns l'objet du produit en JSON
-//  */
-// const getProduct = async () => {
-//   const params = new URLSearchParams(window.location.search);
-//   const idProduct = params.get("id");
-//   let response = await fetch(apiGetUrl + idProduct).catch((err) => {
-//     console.log("error", err);
-//   });
-//   let data = await response.json();
-//   productObject = data;
-//   return data;
-// };
-
-
+//Si le panier est vide
+if(cameraEnregistrerDansLocalStorage === null){
+    const panierVide = 
+    `
+    <div class="container-panier-vide py-4 "> 
+        <div class="display-4 fst-italic">Votre panier est vide</div>
+    </div>
+    `
+    affichageProduitPanier.innerHTML = panierVide;
+//Si le panier n'est pas vide, j'affiche les produits de mon LS    
+} else {
+    let structureProduitPanier = [];
     
+    for (k = 0; k < cameraEnregistrerDansLocalStorage.length; k++) {
+        
+        structureProduitPanier = structureProduitPanier + `
+        <div class="container-récapitulatif col-sm">
+            <div> Quantité 1 - ${cameraEnregistrerDansLocalStorage[k].nomCamera} avec l'objectif : ${cameraEnregistrerDansLocalStorage[k].lensesCamera}</div> 
+            <div>${cameraEnregistrerDansLocalStorage[k].prixCamera} €- Supprimer article</div>
+        </div>
+        `;    
+    }
+    if (k == cameraEnregistrerDansLocalStorage.length) {
+        //Injection html dans la page panier
+        affichageProduitPanier.innerHTML = structureProduitPanier;
+    }
+    
+    
+}

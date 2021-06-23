@@ -75,8 +75,21 @@
       pour capturer votre plus bel instant.
     </p>
   </section>
-
   <!-- Dans ma section, je veux afficher le récapitulatif des produits ajouté au panier -->
+  <section class="container text-center" id="container-produits-panier">
+    <h2>Récapitulatif de votre commande</h2>
+    <div class="row">
+      <div class="container-récapitulatif col-sm">
+        <div> Quantité 1 - nom produit 1</div> 
+        <div>190€ - Supprimer article</div>
+      </div>
+      <div class="container-montant-total col-sm">
+        <div>Montant total = prix</div>
+        <div>Vider le panier</div>
+      </div>
+    </div> 
+  </section>
+
 
   <!-- Dans ma section, je veux afficher le questionnaire pour le paiment du panier -->
   <div class="container">
@@ -94,7 +107,7 @@
               <p class="text-center"><strong>Identité</strong></p>
             </div>
             <div class="sm-col-12 col-md-9">
-              
+
               <!-- Champ Nom -->
               <div class="form-group mb-3">
                 <label for="nom" class="form-label">Votre nom de famille</label>
@@ -165,7 +178,7 @@
           <div class="row m-2">
             <div class="sm-col-12 col-md-3">
               <p class="text-center"><strong>Coordonnées bancaires MasterCard</strong></p>
-              
+
             </div>
             <div class="sm-col-12 col-md-9">
 
@@ -174,7 +187,7 @@
                 <div class="sm-col-12 col-md-6">
                   <div class="form-group mb-3">
                     <label for="prenomcb" class="form-label">Prénom</label>
-                    <input type="text" class="form-control" id="prenomcb" name="prenomcb" required/>
+                    <input type="text" class="form-control" id="prenomcb" name="prenomcb" required />
                     <small></small>
                   </div>
                 </div>
@@ -182,7 +195,7 @@
                 <div class="sm-col-12 col-md-6">
                   <div class="form-group mb-3">
                     <label for="nomcb" class="form-label align-items-center">Nom</label>
-                    <input type="text" class="form-control align-items-center" id="nomcb" name="nomcb" required/>
+                    <input type="text" class="form-control align-items-center" id="nomcb" name="nomcb" required />
                     <small></small>
                   </div>
                 </div>
@@ -191,8 +204,9 @@
                 <div class="sm-col-12 col-md-6">
                   <!-- Champ numéro CB -->
                   <div class="form-group mb-3">
-                    <label for="numcb" class="form-label align-items-center">Numéro de votre MasterCard <strong>(sans espaces)</strong></label>
-                    <input type="number" class="form-control align-items-center" id="numcb" name="numcb" required/>
+                    <label for="numcb" class="form-label align-items-center">Numéro de votre MasterCard <strong>(sans
+                        espaces)</strong></label>
+                    <input type="number" class="form-control align-items-center" id="numcb" name="numcb" required />
                     <small></small>
                   </div>
                 </div>
@@ -202,19 +216,19 @@
                     <label for="dateexpcb" class="form-label align-items-center">Mois</label>
                     <select class="form-select align-items-center" id="exMonth" title="select a month" required>
                       <option value="0">Mois</option>
-                          <option value="01">Janvier</option>
-                          <option value="02">Février</option>
-                          <option value="03">Mars</option>
-                          <option value="04">Avril</option>
-                          <option value="05">Mai</option>
-                          <option value="06">Juin</option>
-                          <option value="07">Juillet</option>
-                          <option value="08">Août</option>
-                          <option value="09">Septembre</option>
-                          <option value="10">Octobre</option>
-                          <option value="11">Novembre</option>
-                          <option value="12">Décembre</option>
-                      </select>
+                      <option value="01">Janvier</option>
+                      <option value="02">Février</option>
+                      <option value="03">Mars</option>
+                      <option value="04">Avril</option>
+                      <option value="05">Mai</option>
+                      <option value="06">Juin</option>
+                      <option value="07">Juillet</option>
+                      <option value="08">Août</option>
+                      <option value="09">Septembre</option>
+                      <option value="10">Octobre</option>
+                      <option value="11">Novembre</option>
+                      <option value="12">Décembre</option>
+                    </select>
                     <small></small>
                   </div>
                 </div>
@@ -224,26 +238,26 @@
                     <label for="dateexpcb" class="form-label">Année</label>
                     <select class="form-select" id="exYear" title="select a year" required>
                       <option value="0">Année</option>
-                         <option value="2013">2013</option>
-                         <option value="2014">2014</option>
-                         <option value="2015">2015</option>
-                         <option value="2016">2016</option>
-                         <option value="2017">2017</option>
-                         <option value="2018">2018</option>
-                         <option value="2019">2019</option>
-                         <option value="2020">2020</option>
-                         <option value="2021">2021</option>
-                         <option value="2022">2022</option>
-                         <option value="2023">2023</option>
-                         <option value="2024">2024</option>
-                         <option value="2025">2025</option>
-                         <option value="2026">2026</option>
-                         <option value="2027">2027</option>
-                         <option value="2028">2028</option>
-                         <option value="2029">2029</option>
-                         <option value="2030">2030</option>
-                         <option value="2031">2031</option>
-                     </select>
+                      <option value="2013">2013</option>
+                      <option value="2014">2014</option>
+                      <option value="2015">2015</option>
+                      <option value="2016">2016</option>
+                      <option value="2017">2017</option>
+                      <option value="2018">2018</option>
+                      <option value="2019">2019</option>
+                      <option value="2020">2020</option>
+                      <option value="2021">2021</option>
+                      <option value="2022">2022</option>
+                      <option value="2023">2023</option>
+                      <option value="2024">2024</option>
+                      <option value="2025">2025</option>
+                      <option value="2026">2026</option>
+                      <option value="2027">2027</option>
+                      <option value="2028">2028</option>
+                      <option value="2029">2029</option>
+                      <option value="2030">2030</option>
+                      <option value="2031">2031</option>
+                    </select>
                     <small></small>
                   </div>
                 </div>
@@ -331,6 +345,7 @@
     integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous">
   </script>
   <script src="javascript/formulaire.js"></script>
+  <script src="javascript/panier.js"></script>
 </body>
 
 </html>

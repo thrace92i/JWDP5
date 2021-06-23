@@ -13,7 +13,7 @@ const email2 = document.getElementById('emailConfirmation');
 
 
 /* Test récupération fonctionnaire : OK */
-console.log(paiementForm);
+// console.log(paiementForm);
 
 // ********* EVENEMENTS FORMULAIRES *********
 

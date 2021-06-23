@@ -93,7 +93,7 @@ async function idProduitSelectionner() {
 
             let cameraEnregistrerDansLocalStorage = JSON.parse(localStorage.getItem("cameraPanier"));
             // JSON.parse permets de convertir les données au format JSON en Objet JS dans le LS
-            console.log(cameraEnregistrerDansLocalStorage);
+            // console.log(cameraEnregistrerDansLocalStorage);
 
             //Fonction fenêtre popup lorsqu'on ajoute une caméra au panier
             const popupConfirmation = () => { 
@@ -136,7 +136,7 @@ async function idProduitSelectionner() {
         for (let j = 0; j < quantiteObjectifs.length; j++) {
             recupObjectif = recupObjectif +
                 `
-                    <option value="${j+1}">${quantiteObjectifs[j]}</option>
+                    <option value="${quantiteObjectifs[j]}">${quantiteObjectifs[j]}</option>
                     `
             // console.log(recupObjectif);
         }
