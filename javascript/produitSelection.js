@@ -103,22 +103,24 @@ async function idProduitSelectionner() {
                     window.location.href = "index.html";
                 }
             }
-                
-            
 
+            //Fonction pour ajouter un produit sélectionner dans le localStorage
+            const ajoutCameraLS = () => {
+                //Ajout dans le tableau la caméra avec l'objectif choisi par l'utilisateur
+                cameraEnregistrerDansLocalStorage.push(optionsCameras);
+                //Je transforme en format JSON pour l'envoyer dans le LS dans la key cameraPanier
+                localStorage.setItem("cameraPanier", JSON.stringify(cameraEnregistrerDansLocalStorage));
+            }
+            
             //Produit enregistré dans le LS ?
             if (cameraEnregistrerDansLocalStorage) {
-                cameraEnregistrerDansLocalStorage.push(optionsCameras);
-                localStorage.setItem("cameraPanier", JSON.stringify(cameraEnregistrerDansLocalStorage));
-                console.log(cameraEnregistrerDansLocalStorage);
+                ajoutCameraLS();
                 popupConfirmation();
             }
             //Pas de produit enregistré dans le LS ?
             else {
                 cameraEnregistrerDansLocalStorage = []
-                cameraEnregistrerDansLocalStorage.push(optionsCameras);
-                console.log(cameraEnregistrerDansLocalStorage);
-                localStorage.setItem("cameraPanier", JSON.stringify(cameraEnregistrerDansLocalStorage));
+                ajoutCameraLS();
                 popupConfirmation();
             }
 
@@ -143,6 +145,8 @@ async function idProduitSelectionner() {
         const affichageObjectif = document.querySelector('#lenses_cameras');
         affichageObjectif.innerHTML = recupObjectif;
         // console.log(affichageObjectif);
+
+
 
 
 

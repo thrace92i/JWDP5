@@ -47,11 +47,7 @@ fetch(urlApi)
             </div>
             </div>
         </div>; `;
-
-        }
-
-        
-        
+        }     
 });
 
 
