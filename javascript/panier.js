@@ -156,7 +156,22 @@ paiementForm.addEventListener('click', (e) => {
     console.log(envoieServeur);
 })
 
-//Enregistrement des valeurs dans un objet 
+// ----- Mettre le contenu du LS dans les champs du formulaire -----
+//Récupérer la key LS et mettre dans une variable
+
+const dataLS = localStorage.getItem('formulaireValues');
+
+//Conversion des chaînes de caractère en objet JS
+const dataLSObjet = JSON.parse(dataLS);
+
+//Mets les valeurs du LS dans les champs formulaire
+document.querySelector("#firstName").setAttribute('value', dataLSObjet.firstName);
+document.querySelector("#lastName").setAttribute('value', dataLSObjet.lastName);
+document.querySelector("#adresse").setAttribute('value', dataLSObjet.address);
+document.querySelector("#city").setAttribute('value', dataLSObjet.city);
+document.querySelector("#email").setAttribute('value', dataLSObjet.email);
+
+
 
 
 
