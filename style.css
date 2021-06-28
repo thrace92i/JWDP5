@@ -1,6 +1,6 @@
 body {
-    background-color: #f8c291;
-    background-repeat:no-repeat;
+    background: rgb(216,215,244);
+    background: radial-gradient(circle, rgba(216,215,244,1) 0%, rgba(211,211,226,1) 35%, rgba(211,224,227,1) 100%);
     background-size: cover;
 }
 
@@ -27,3 +27,7 @@ a {
     text-decoration: none;
     color: white;
 }
+
+/* .imageProduit{
+	height: auto;
+}  */

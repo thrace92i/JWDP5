@@ -21,32 +21,28 @@ fetch(urlApi)
     .then(dataCameras => {
         // console.log(dataCameras);
         for (let cameras of dataCameras){
-            affichageProduitIndex.innerHTML += `<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 m-3">
-            <div class="col-sm-12 col-md-12 col-lg-12">
-            <div class="card shadow-sm">
-                <!-- Insérer l'image de la caméra "imageUrl"  -->
-                <img src="${cameras.imageUrl}" alt="${cameras.name}" class="imgProduit">
-
-                <div class="card-body">
-                <!-- Afficher le nom de la caméra "name" -->
-                <h2 class="text-center nomProduit">${cameras.name}</h2>
-                <!-- Afficher la description du produit ZURSS 50S "description" -->
-                <p class="card-text descriptionProduit">Description de la caméra ${cameras.name} : ${cameras.description}</p>
-                <!-- Afficher la description du produit ZURSS 50S "description" -->
-                <!-- Afficher le prix du produit ZURSS 50S en euros "price" -->
-                <p class="prixProduit"><strong>${cameras.price / 100} € </strong></p>
-                <div class="d-flex justify-content-center align-items-center">
-                    <div class="btn-group">
-                    <!-- Afficher la page du produit ZURSS 50S au clique sur le bouton -->
-                    <a href="page.html?_id=${cameras._id}"  class="btn btn-sm btn-outline-primary pageCamera">En savoir plus</a>
-                    <!-- Ajouter au panier le produit ZURSS 50S au clique sur le bouton -->
-                    <button type="button" class="btn btn-sm btn-outline-success ajoutPanier"data-id ="${cameras._id}">Ajouter au panier</button>
+            affichageProduitIndex.innerHTML += 
+            `
+            
+                <div class="col-sm">
+                    <div class="card">
+                        <img class="card-img-top imageProduit container-fluid" src="${cameras.imageUrl}" alt="${cameras.name}">
+                            <div class="card-body">
+                                 <h4 class="card-title d-flex justify-content-center">${cameras.name}</h4>
+                            <div class="row">
+                                <div class="col d-flex justify-content-center">
+                                    <p class="btn btn-danger btn-block"><strong>${cameras.price / 100} € </strong></p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col d-flex justify-content-center">
+                                    <a href="page.html?_id=${cameras._id}"  class="btn btn-success btn-block pageCamera">En savoir plus</a>	
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                </div>
-            </div>
-            </div>
-        </div>; `;
+            `;
         }     
 });
 
