@@ -140,18 +140,22 @@ const sendPurchaseRequest = async function (dataToSend) {
             body: JSON.stringify(dataToSend)
         });
 
-        console.log(encodeURIComponent('h​ttp://localhost:3000/api/cameras/order'));
+        if (response.ok) {
+            let responseData = await response.json();
+            window.location = 'remerciement.html?id_=' + responseData.orderId + '&price=' + prixTotal;
+            localStorage.setItem('idCommande', responseData.orderId);
 
-        let responseData = await response.json();
-        localStorage.setItem('idCommande', responseData.orderId);
-        //window.location = 'remerciement.html';
+        } else {
+            console.log("Aïe, une erreur c'est produite et la requête n'a pas abouti:");
+            console.log(response.status);
+        }
 
     } catch (error) {
         console.log(error);
     }
 }
 
-paiementForm.addEventListener('click', (e) => {
+paiementForm.addEventListener('submit', async (e) => {
     e.preventDefault;
 
     let contact = {
@@ -170,10 +174,6 @@ paiementForm.addEventListener('click', (e) => {
         let idPanierCamera = cameraEnregistrerDansLocalStorage[p].idCamera;
         console.log(idPanierCamera);
         products.push(idPanierCamera);
-
-        //Insertion des prix paniers récupérer dans le tableau prixTotalCalcul
-
-        //
     }
 
     //Ancrer le formulaireValues dans le LS en convertissant les objets et ses données en châines de caractères
@@ -187,7 +187,8 @@ paiementForm.addEventListener('click', (e) => {
     console.log("envoieServeur");
     console.log(envoieServeur);
 
-    sendPurchaseRequest(envoieServeur);
+        await sendPurchaseRequest(envoieServeur);
+        
 })
 
 // ----- Mettre le contenu du LS dans les champs du formulaire -----
@@ -262,8 +263,11 @@ paiementForm.addEventListener('submit', function (e) {
     if (validerNom(paiementForm.nom) && validerPrenom(paiementForm.prenom) && validerEmail(paiementForm.email) && validerEmail2(paiementForm.email2) && validerAdresse(paiementForm.adresse) && validerDepartement(paiementForm.departement) && validerCp(paiementForm.cp) && validerPrenomCb(paiementForm.prenomcb) && validerNomCb(paiementForm.nomcb) && validerCodeCb(paiementForm.numcb) && validerCVC(paiementForm.codesecucb) == true) {
         paiementForm.submit();
         alert('Votre paiement à été accepté')
+        window.location.href = "remerciement.html"
+
     } else {
         alert('Veuilliez vérifier les champs que vous avez rentré.')
+
     }
 });
 
