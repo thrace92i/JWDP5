@@ -24,9 +24,9 @@ fetch(urlApi)
             affichageProduitIndex.innerHTML += 
             `
             
-                <div class="col-sm">
+                <div class="col-lg-6 mt-2 mb-2">
                     <div class="card">
-                        <img class="card-img-top imageProduit container-fluid" src="${cameras.imageUrl}" alt="${cameras.name}">
+                        <img class="card-img-top imageProduit bg-image hover-overlay ripple shadow-1-strong rounded" src="${cameras.imageUrl}" alt="${cameras.name}">
                             <div class="card-body">
                                  <h4 class="card-title d-flex justify-content-center">${cameras.name}</h4>
                             <div class="row">
@@ -36,7 +36,7 @@ fetch(urlApi)
                             </div>
                             <div class="row">
                                 <div class="col d-flex justify-content-center">
-                                    <a href="page.html?_id=${cameras._id}"  class="btn btn-success btn-block pageCamera">En savoir plus</a>	
+                                    <a href="page.html?_id=${cameras._id}"  class="btn button-info-orange-color btn-block pageCamera">En savoir plus</a>	
                                 </div>
                             </div>
                         </div>

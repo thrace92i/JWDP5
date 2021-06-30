@@ -5,6 +5,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
   <!-- Font Awesome -->
   <script src="https://kit.fontawesome.com/aed523a6df.js" crossorigin="anonymous"></script>
 
@@ -20,7 +25,7 @@
 <body>
 
   <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark my-primary-color h-25">
       <div class="container d-flex justify-content-xs-center justify-content-sm-center  align-items-center py-2">
         <div class="d-flex justify-content-sm-center align-items-center ">
           <a class="navbar-brand fs-3" href="index.html">Onorico</a>
@@ -53,6 +58,7 @@
     </nav>
   </header>
 
+
   <section class="titre-homepage container text-center py-2">
     <h1 class="display-1 fst-italic">Bienvenue chez <strong>Onorico</strong> !</h1>
     <i class="bi bi-camera2" id="icone-site-titre"></i>
@@ -61,21 +67,17 @@
       capturer votre plus bel instant.</p>
   </section>
 
-  <div id="testJs">
+<!-- Dans ma section, je veux afficher sous forme de liste les articles disponibles à la vente -->
 
-  </div>
-
-  <!-- Dans ma section, je veux afficher sous forme de liste les articles disponibles à la vente -->
-
-  <div class="container mt-3">
+  <div class="container mt-5 mb-5">
     <div class="row">
       <div class="col-sm">
         <div class="card">
-          <div class="card-header bg-primary text-white text-uppercase">
-            <i class="fa fa-star"></i>Nos Caméras
+          <div class="card-header my-secondary-color text-white text-uppercase d-flex align-items-center justify-content-center">
+            <h2 class="py-2">Nos Caméras</h2>
           </div>
-          <div class="card-body">
-            <div class="row" id="affichageProduit">
+          <div class="card-body ">
+            <div class="row " id="affichageProduit">
 
             </div>
 
@@ -87,7 +89,7 @@
 
   
 
-      <footer class="bg-dark fixed-bottom">
+      <footer class="my-primary-color mt-5">
         <div class="container">
           <div class="row py-3">
             <div class="col-lg-4 col-md-12 mb-4 mb-md-0 d-flex flex-column align-items-center">
