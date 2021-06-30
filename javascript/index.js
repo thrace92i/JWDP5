@@ -28,15 +28,10 @@ fetch(urlApi)
                     <div class="card">
                         <img class="card-img-top imageProduit bg-image hover-overlay ripple shadow-1-strong rounded" src="${cameras.imageUrl}" alt="${cameras.name}">
                             <div class="card-body">
-                                 <h4 class="card-title d-flex justify-content-center">${cameras.name}</h4>
+                                 <h4 class="card-title d-flex justify-content-center mx-auto my-2">${cameras.name} - ${cameras.price / 100} €</h4>
                             <div class="row">
                                 <div class="col d-flex justify-content-center">
-                                    <p class="btn btn-danger btn-block"><strong>${cameras.price / 100} € </strong></p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col d-flex justify-content-center">
-                                    <a href="page.html?_id=${cameras._id}"  class="btn button-info-orange-color btn-block pageCamera">En savoir plus</a>	
+                                    <a href="page.html?_id=${cameras._id}"  class="btn button-info-orange-color btn-block fw-800 text-uppercase pageCamera">En savoir plus</a>	
                                 </div>
                             </div>
                         </div>
