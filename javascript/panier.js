@@ -161,21 +161,6 @@ paiementForm.addEventListener('submit', async (e) => {
         
 })
 
-// ----- Mettre le contenu du LS dans les champs du formulaire -----
-//Récupérer la key LS et mettre dans une variable
-
-const dataLS = localStorage.getItem('contact');
-
-//Conversion des chaînes de caractère en objet JS
-const dataLSObjet = JSON.parse(dataLS);
-
-//Mets les valeurs du LS dans les champs formulaire
-document.querySelector("#firstName").setAttribute('value', dataLSObjet.firstName);
-document.querySelector("#lastName").setAttribute('value', dataLSObjet.firstName);
-document.querySelector("#adresse").setAttribute('value', dataLSObjet.address);
-document.querySelector("#city").setAttribute('value', dataLSObjet.city);
-document.querySelector("#email").setAttribute('value', dataLSObjet.email);
-
 
 /* Ecoute de la modification du champ nom  */
 paiementForm.nom.addEventListener('change', function () {
@@ -225,24 +210,6 @@ paiementForm.numcb.addEventListener('change', function () {
 paiementForm.codesecucb.addEventListener('change', function () {
     validerCVC(this);
 });
-
-// paiementForm.addEventListener('change', function(){
-//     validerNom(this);
-//     validerPrenom(this);
-//     validerEmail(this);
-//     validerEmail2(this);
-//     validerAdresse(this);
-//     validerAdresse(this);
-//     validerDepartement(this);
-//     validerCp(this);
-//     validerPrenomCb(this);
-//     validerNomCb(this);
-//     validerCodeCb(this);
-//     validerCVC(this);
-// });
-
-
-
 
 
 // ********* VALIDATION DES CHAMPS *********
@@ -515,6 +482,9 @@ const validerCVC = function (champCvc) {
         return false;
     }
 }
+
+
+
 
 /* Ecouter la soumission du formulaire */
 paiementForm.addEventListener('submit', function (e) {
