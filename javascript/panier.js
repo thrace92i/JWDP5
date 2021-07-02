@@ -121,39 +121,9 @@ const email2 = document.getElementById('emailConfirmation');
 // console.log(email2);
 
 
-
-/* Test récupération fonctionnaire : OK */
-// console.log(paiementForm);
-
 // ********* EVENEMENTS FORMULAIRES *********
 
-// Récupération des valeurs pour les inscrire dans le LS
 
-const sendPurchaseRequest = async function (dataToSend) {
-    console.log(dataToSend);
-    try {
-        let response = await fetch('http://localhost:3000/api/cameras/order', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(dataToSend)
-        });
-
-        if (response.ok) {
-            let responseData = await response.json();
-            window.location = 'remerciement.html?id_=' + responseData.orderId + '&price=' + prixTotal;
-            localStorage.setItem('idCommande', responseData.orderId);
-
-        } else {
-            console.log("Aïe, une erreur c'est produite et la requête n'a pas abouti:");
-            console.log(response.status);
-        }
-
-    } catch (error) {
-        console.log(error);
-    }
-}
 
 paiementForm.addEventListener('submit', async (e) => {
     e.preventDefault;
@@ -207,7 +177,6 @@ document.querySelector("#city").setAttribute('value', dataLSObjet.city);
 document.querySelector("#email").setAttribute('value', dataLSObjet.email);
 
 
-
 /* Ecoute de la modification du champ nom  */
 paiementForm.nom.addEventListener('change', function () {
     validerNom(this);
@@ -257,19 +226,23 @@ paiementForm.codesecucb.addEventListener('change', function () {
     validerCVC(this);
 });
 
-/* Ecouter la soumission du formulaire */
-paiementForm.addEventListener('submit', function (e) {
-    e.preventDefault();
-    if (validerNom(paiementForm.nom) && validerPrenom(paiementForm.prenom) && validerEmail(paiementForm.email) && validerEmail2(paiementForm.email2) && validerAdresse(paiementForm.adresse) && validerDepartement(paiementForm.departement) && validerCp(paiementForm.cp) && validerPrenomCb(paiementForm.prenomcb) && validerNomCb(paiementForm.nomcb) && validerCodeCb(paiementForm.numcb) && validerCVC(paiementForm.codesecucb) == true) {
-        paiementForm.submit();
-        alert('Votre paiement à été accepté')
-        window.location.href = "remerciement.html"
+// paiementForm.addEventListener('change', function(){
+//     validerNom(this);
+//     validerPrenom(this);
+//     validerEmail(this);
+//     validerEmail2(this);
+//     validerAdresse(this);
+//     validerAdresse(this);
+//     validerDepartement(this);
+//     validerCp(this);
+//     validerPrenomCb(this);
+//     validerNomCb(this);
+//     validerCodeCb(this);
+//     validerCVC(this);
+// });
 
-    } else {
-        alert('Veuilliez vérifier les champs que vous avez rentré.')
 
-    }
-});
+
 
 
 // ********* VALIDATION DES CHAMPS *********
@@ -540,5 +513,48 @@ const validerCVC = function (champCvc) {
         messageCvc.classList.add('text-danger');
         messageCvc.classList.remove('text-success');
         return false;
+    }
+}
+
+/* Ecouter la soumission du formulaire */
+paiementForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (validerNom(paiementForm.nom) && validerPrenom(paiementForm.prenom) && validerEmail(paiementForm.email) && validerEmail2(paiementForm.email2) && validerAdresse(paiementForm.adresse) && validerDepartement(paiementForm.departement) && validerCp(paiementForm.cp) && validerPrenomCb(paiementForm.prenomcb) && validerNomCb(paiementForm.nomcb) && validerCodeCb(paiementForm.numcb) && validerCVC(paiementForm.codesecucb) == true) {
+        paiementForm.submit();
+        alert('Votre paiement à été accepté')
+        window.location.href = "remerciement.html"
+
+    } else {
+        alert('Veuilliez vérifier les champs que vous avez rentré.')
+
+    }
+});
+
+
+// Récupération des valeurs pour les inscrire dans le LS
+
+const sendPurchaseRequest = async function (dataToSend) {
+    console.log(dataToSend);
+    try {
+        let response = await fetch('http://localhost:3000/api/cameras/order', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(dataToSend)
+        });
+
+        if (response.ok) {
+            let responseData = await response.json();
+            window.location = 'remerciement.html?id_=' + responseData.orderId + '&price=' + prixTotal;
+            localStorage.setItem('idCommande', responseData.orderId);
+
+        } else {
+            console.log("Aïe, une erreur c'est produite et la requête n'a pas abouti:");
+            console.log(response.status);
+        }
+
+    } catch (error) {
+        console.log(error);
     }
 }
