@@ -163,4 +163,4 @@ recuperationCamerasAPI(URLCamerasAPI)
         affichageObjectif.innerHTML = recupObjectif;
         // console.log(affichageObjectif);
 
-})
+}
