@@ -131,6 +131,7 @@ recuperationCamerasAPI(URLCamerasAPI)
                 localStorage.setItem("cameraPanier", JSON.stringify(cameraEnregistrerDansLocalStorage));
             }
             
+            //ENREGISTREMENT DU PRODUIT DANS LOCALSTORAGE
             //Produit enregistré dans le LS ?
             if (cameraEnregistrerDansLocalStorage) {
                 ajoutCameraLS();
