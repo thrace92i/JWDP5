@@ -46,34 +46,52 @@ const recuperationCamerasAPI = async function (URLApi) {
 
 recuperationCamerasAPI(URLCamerasAPI)
     .then(function idProduitSelectionner(dataCameraId){
-        affichagePageProduit.innerHTML = `
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 m-3">
-                    <div class="col-sm-12 col-md-12 col-lg-12">
-                        <div class="card shadow-sm">
-                            <!-- Insérer l'image de la caméra "imageUrl"  -->
-                            <img src="${dataCameraId.imageUrl}" alt="${dataCameraId.name}" class="imgProduit">
-                    
-                                <div class="card-body">
-                                    <!-- Afficher le nom de la caméra "name" -->
-                                    <h2 class="text-center nomProduit">${dataCameraId.name}</h2>
-                                    <!-- Afficher la description du produit ZURSS 50S "description" -->
-                                    <p class="card-text descriptionProduit">Description de la caméra ${dataCameraId.name} : ${dataCameraId.description}</p>
-                                    <!-- Afficher la description du produit ZURSS 50S "description" -->
-                                    <p class="card-text descriptionProduit">Les différents objectifs : ${dataCameraId.lenses}</p>
-                                    <!-- Afficher le prix du produit ZURSS 50S en euros "price" -->
-                                    <p class="prixProduit"><strong>${dataCameraId.price / 100} € </strong></p>
-                                </div>
-                                <form class="card-body">
-                                    <label for="lenses_cameras">Choisir l'objectif : </label>
-                                        <select  name="lenses_cameras" id="lenses_cameras" > 
-                                        </select>
-                                </form>
-                                <div class="d-grid gap-2 col-md-3 offset-md-3 mx-auto">
-                                    <button id="btnPanier" type="submit" name="btn-panier" class="btn btn-primary mt-2 mb-2">Ajouter l'article au panier</button>    
-                                </div>
+        affichagePageProduit.innerHTML = 
+        ` <div class="row">
+        <!-- Image -->
+        <div class="col-12 col-lg-6">
+            <div class="card bg-light mb-3">
+                <div class="card-body">
+                    <a href="" data-toggle="modal" data-target="#productModal">
+                        <img class="img-fluid" src="${dataCameraId.imageUrl}" alt="${dataCameraId.name}" />
+                        <p class="text-center">Zoom</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add to cart -->
+        <div class="col-12 col-lg-6 add_to_cart_block">
+            <div class="card bg-light mb-3">
+                <div class="card-body">
+                    <h3 class="text-center my-2">${dataCameraId.name}</h3>
+                    <p class="price my-2">${dataCameraId.price / 100} €</p>
+                    <p class="text-center my-2">${dataCameraId.description}</p>
+                    <form>
+                        <div class="form-group my-2">
+                            <label for="lenses_cameras"><strong>Objectif disponible :</strong></label>
+                            <select class="custom-select my-2" name="lenses_cameras" id="lenses_cameras">
+                                <option selected>Select</option>
+                            </select>
                         </div>
+                        <a id="btnPanier" type="submit" name="btn-panier" class="btn btn-success btn-lg btn-block text-uppercase w-100 my-2">
+                            <i class="fa fa-shopping-cart"></i> Ajouté au panier
+                        </a>
+                    </form>
+                    <div class="product_rassurance my-3">
+                        <ul class="list-inline">
+                            <li class="list-inline-item my-2"><i class="fa fa-truck fa-2x"></i><br/>Livraison rapide</li>
+                            <li class="list-inline-item my-2"><i class="fa fa-credit-card fa-2x"></i><br/>Paiement Sécurisé</li>
+                            <li class="list-inline-item my-2"><i class="fa fa-phone fa-2x"></i><br/>+33 1 22 54 65 60</li>
+                        </ul>
                     </div>
-                </div>; `;
+                </div>
+            </div>
+        </div>
+    </div>`
+                ;
+
+                
 
         
         //***** GESTION DU PANIER ******
