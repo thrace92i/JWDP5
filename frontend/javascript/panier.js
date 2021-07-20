@@ -117,17 +117,69 @@ let paiementForm = document.querySelector('#paiementForm');
 
 const email = document.getElementById('email');
 // console.log(email);
-const email2 = document.getElementById('emailConfirmation');
-// console.log(email2);
 
 
-// ********* EVENEMENTS FORMULAIRES *********
+// ********* VALIDATION DES CHAMPS *********
+// ***** CHAMP NOM *****
 
+
+
+//Récupération des champs du formulaire 
+
+const champNom = document.getElementById("lastName");
+const champPrenom = document.getElementById("firstName");
+const champEmail = document.getElementById("email");
+const champAdresse = document.getElementById("adresse");
+const champVille = document.getElementById("city");
+
+/* Ecoute de la modification du champ nom  */
+
+
+function validateInput(regex, input, idMessage, validMessage, invalidMessage){
+
+    
+    let inputToValidate = regex.test(input.value);
+
+    let messageInput = document.getElementById(idMessage);
+
+    if(inputToValidate == true){
+        messageInput.innerHTML = validMessage;
+        messageInput.classList.remove('text-danger');
+        messageInput.classList.add('text-success');
+        return true
+    }else{
+        messageInput.innerHTML = invalidMessage;
+        messageInput.classList.remove('text-success');
+        messageInput.classList.add('text-danger');
+        return false;
+    }
+}
+
+
+// // ********* EVENEMENTS FORMULAIRES *********
+// paiementForm.addEventListener('change', function() {
+    
+// })
 
 
 paiementForm.addEventListener('submit', async (e) => {
-    e.preventDefault;
 
+    const validationNom = validateInput(new RegExp("^[a-zA-Z '.-]*$", 'g'), champNom, 'messageNom', "Votre nom est valide", "Votre nom n'est pas valide");
+    const validationPrenom = validateInput(new RegExp("^[A-Z][A-Za-z\é\è\ê\-]+$", "g"), champPrenom, 'messagePrenom', "Votre prénom est valide","Votre prénom n'est pas valide");
+    const validationEmail = validateInput(new RegExp('^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$', 'g'), champEmail, "emailMessage", "L'adresse email est valide", "L'adresse e-mail est non valide");
+    const validationAdresse = validateInput(new RegExp('^(.){4,128}$', 'g'), champAdresse, "adresseMessage", "Votre adresse est valide", "Veuillez vérifier votre adresse");
+    const validationVille = validateInput(new RegExp("^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$"), champVille, "villeMessage", "Votre ville est valide", "Veuillez vérifier la saisie de votre ville");
+
+    if(validationNom && validationPrenom && validationEmail && validationAdresse && validationVille  == true){
+        alert("Paiement effectué.")
+        paiementForm.submit();
+        
+    }else{
+        e.preventDefault();
+        alert("Veuilliez vérifier les champs que vous avez rentré.");
+        return false;
+    }
+    
     let contact = {
         firstName: document.querySelector("#firstName").value,
         lastName: document.querySelector("#lastName").value,
@@ -160,85 +212,6 @@ paiementForm.addEventListener('submit', async (e) => {
         await sendPurchaseRequest(envoieServeur);
         
 })
-
-// ********* VALIDATION DES CHAMPS *********
-// ***** CHAMP NOM *****
-
-//Récupération des champs du formulaire 
-
-const champNom = document.getElementById("lastName");
-console.log(champNom.value);
-const champPrenom = document.getElementById("firstName");
-console.log(champPrenom);
-const champEmail = document.getElementById("email");
-console.log(champEmail);
-const champAdresse = document.getElementById("adresse");
-console.log(champAdresse);
-const champVille = document.getElementById("city");
-console.log(champVille);
-
-/* Ecoute de la modification du champ nom  */
-
-
-function validateInput(regex, input, idMessage, validMessage, invalidMessage){
-
-    
-    let inputToValidate = regex.test(input.value);
-
-    let messageInput = document.getElementById(idMessage);
-
-    if(inputToValidate == true){
-        messageInput.innerHTML = validMessage;
-        messageInput.classList.remove('text-danger');
-        messageInput.classList.add('text-success');
-        return true
-    }else{
-        messageInput.innerHTML = invalidMessage;
-        messageInput.classList.remove('text-success');
-        messageInput.classList.add('text-danger');
-        return false;
-    }
-}
-
-paiementForm.nom.addEventListener('change', function () {
-    const validerNom = validateInput(new RegExp("^[a-zA-Z '.-]*$", 'g'), champNom, 'messageNom', "Votre nom est valide", "Votre nom n'est pas valide");
-});
-
-
-
-/* Ecoute de la modification du champ prenom  */
-paiementForm.prenom.addEventListener('change', function () {
-    const validerPrenom = validateInput(new RegExp("^[A-Z][A-Za-z\é\è\ê\-]+$", "g"), champPrenom, 'messagePrenom', "Votre prénom est valide","Votre prénom n'est pas valide");
-});
-
-/* Ecoute de la modification du champ email  */
-paiementForm.email.addEventListener('change', function () {
-    const validerEmail = validateInput(new RegExp('^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$', 'g'), email, "emailMessage", "L'adresse email est valide", "L'adresse e-mail est non valide");
-});
-
-paiementForm.adresse.addEventListener('change', function () {
-    const validerAdresse = validateInput(new RegExp('^(.){4,128}$', 'g'), adresse, "adresseMessage", "Votre adresse est valide", "Veuillez vérifier votre adresse");
-});
-
-
-paiementForm.ville.addEventListener('change', function () {
-    const validerVille = validateInput(new RegExp("^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$"), city, "villeMessage", "Votre ville est valide", "Veuillez vérifier la saisie de votre ville");
-})
-
-
-/* Ecouter la soumission du formulaire */
-paiementForm.addEventListener('submit', function (e) {
-    e.preventDefault();
-    if (validerNom(paiementForm.nom) && validerPrenom(paiementForm.prenom) && validerEmail(paiementForm.email) && validerAdresse(paiementForm.adresse) && validerVille(paiementForm.ville)  == true) {
-        paiementForm.submit();
-        alert('Votre paiement à été accepté')
-        window.location.href = "remerciement.html"
-
-    } else {
-        alert('Veuilliez vérifier les champs que vous avez rentré.')
-
-    }
-});
 
 
 // Récupération des valeurs pour les inscrire dans le LS
