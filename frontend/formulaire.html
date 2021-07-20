@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/aed523a6df.js" crossorigin="anonymous"></script>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" />
+  <link rel="stylesheet" href="css/style.css" />
+
+  <title>Onorico</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark my-primary-color">
+    <div class="
+          container
+          d-flex
+          justify-content-xs-center justify-content-sm-center
+          align-items-center
+          py-2
+        ">
+      <div class="d-flex justify-content-sm-center align-items-center">
+        <a class="navbar-brand fs-3" href="index.html">Onorico</a>
+        <i class="bi bi-camera2" style="font-size: 2.5rem; color: white"></i>
+      </div>
+      <div class="
+            collapse
+            navbar-collapse
+            d-flex
+            align-items-center
+            justify-content-lg-end
+          " id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item mx-3">
+              <a class="nav-link active" aria-current="page" href="index.html">ACCEUIL</a>
+            </li>
+            <li class="nav-item mx-3">
+              <a class="nav-link" href="formulaire.html">Votre Panier</a>
+            </li>
+          </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section class="titre-homepage container text-center py-2 my-5">
+    <h1 class="display-1 fst-italic">
+      Votre panier <strong>Onorico</strong> !
+    </h1>
+    <i class="bi bi-camera2" id="icone-site-titre"></i>
+    <p class="display-7 fst-italic blockquote">
+      Le récapitulatif de votre panier
+    </p>
+  </section>
+  <!-- Dans ma section, je veux afficher le récapitulatif des produits ajouté au panier -->
+  <div id="container-panier-vide" class="py-4">
+
+  </div>
+
+  <div class="container mb-4 text-center">
+    <div class="row">
+      <div class="col-12">
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col"> </th>
+                <th scope="col">Caméra</th>
+                <th scope="col">Quantité</th>
+                <th scope="col">Objectif</th>
+                <th scope="col" class="text-right">Prix</th>
+                <th> </th>
+              </tr>
+            </thead>
+            <tbody id="container-produits-panier">
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- Dans ma section, je veux afficher le questionnaire pour le paiment du panier -->
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-8">
+        <h1 class="my-2 text-center">
+          Paiement de votre commande
+        </h1>
+        <p class="text-center my-5">Veuillez remplir les champs du formulaire ci-dessous pour que nous puissions valider
+          votre commande</p>
+        <form action="" method="POST" id="paiementForm">
+          <!-- ******* IDENTITE ******** -->
+          <div class="row m-2">
+            <div class="sm-col-12 col-md-3">
+              <p class="text-center"><strong>Identité</strong></p>
+            </div>
+            <div class="sm-col-12 col-md-9">
+
+              <!-- Champ Nom -->
+              <div class="form-group mb-3">
+                <label for="nom" class="form-label">Votre nom de famille</label>
+                <input type="text" class="form-control" name="nom" id="lastName" required />
+                <small id="messageNom"></small>
+              </div>
+              <!-- Champ prénom -->
+              <div class="form-group mb-3">
+                <label for="prenom" class="form-label">Votre prénom</label>
+                <input type="text" class="form-control" name="prenom" id="firstName" required />
+                <small id="messagePrenom"></small>
+              </div>
+              <!-- Champ e-mail -->
+              <div class="form-group mb-3">
+                <label for="email" class="form-label">Votre adresse e-mail</label>
+                <input type="email" class="form-control" id="email" name="email" required />
+                <small id="emailMessage"></small>
+              </div>
+            </div>
+          </div>
+          <!-- ******* ADRESSE ******** -->
+          <!-- Adresse du client -->
+          <div class="row m-2">
+            <div class="sm-col-12 col-md-3">
+              <p class="text-center"><strong>Adresse</strong></p>
+            </div>
+            <div class="sm-col-12 col-md-9">
+              <!-- Champ Adresse -->
+              <div class="form-group mb-3">
+                <label for="adresse" class="form-label">Votre adresse</label>
+                <input type="text" class="form-control" name="adresse" id="adresse" required />
+                <small id="adresseMessage"></small>
+              </div>
+              <!-- Champ ville -->
+              <div class="form-group mb-3">
+                <label for="ville" class="form-label">Ville</label>
+                <input type="text" class="form-control" name="ville" id="city" />
+                <small id="villeMessage"></small>
+              </div>
+            </div>
+          </div>
+
+          <!-- *****CONFIRMATION PAIMENT -->
+          <div class="row">
+            <div class="sm-col-12 col-md-3">
+              <p class="text-center"><strong>Paiement</strong></p>
+            </div>
+            <div class="sm-col-12 col-md-9">
+              <div class="form-group d-grid gap-2">
+                <button type="submit" class="btn btn-primary">
+                  Confirmer le paiement
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <footer class="my-primary-color mt-5">
+    <div class="container">
+      <div class="row py-3">
+        <div class="
+              col-lg-4 col-md-12
+              mb-4 mb-md-0
+              d-flex
+              flex-column
+              align-items-center
+            ">
+          <h5>© 2020-2021 Onorico</h5>
+          <i class="bi bi-camera2" style="font-size: 2rem; color: white"></i>
+        </div>
+        <div class="
+              col-lg-4 col-md-6
+              mb-4 mb-md-0
+              d-flex
+              flex-column
+              align-items-center
+            ">
+          <h5>Nos partenaires</h5>
+          <ul>
+            <li>
+              <a href="#">life&survie</a>
+            </li>
+            <li>
+              <a href="#">alixonline</a>
+            </li>
+            <li>
+              <a href="#">expert-cam</a>
+            </li>
+          </ul>
+        </div>
+        <div class="
+              col-lg-4 col-md-6
+              mb-4 mb-md-0
+              d-flex
+              flex-column
+              align-items-center
+            ">
+          <button type="button" class="btn btn-light align-items-center">
+            Mentions Légales
+          </button>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"
+    integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js"
+    integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous">
+  </script>
+  <!-- <script src="javascript/formulaire.js"></script> -->
+  <script src="javascript/panier.js"></script>
+</body>
+
+</html>
