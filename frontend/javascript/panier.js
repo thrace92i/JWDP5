@@ -123,7 +123,6 @@ const email = document.getElementById('email');
 // ***** CHAMP NOM *****
 
 
-
 //Récupération des champs du formulaire 
 
 const champNom = document.getElementById("lastName");
@@ -157,7 +156,8 @@ function validateInput(regex, input, idMessage, validMessage, invalidMessage){
 
 
 
-paiementForm.addEventListener('submit', async (e) => {
+
+paiementForm.addEventListener('submit', function() {
 
     const validationNom = validateInput(new RegExp("^([a-zA-Z]{2,}'?-?([a-zA-Z]{1,})?)", "g"), champNom, 'messageNom', "Votre nom est valide", "Votre nom n'est pas valide");
     const validationPrenom = validateInput(new RegExp("^[A-Z][A-Za-z\é\è\ê\-]+$", "g"), champPrenom, 'messagePrenom', "Votre prénom est valide","Votre prénom n'est pas valide");
@@ -166,13 +166,11 @@ paiementForm.addEventListener('submit', async (e) => {
     const validationVille = validateInput(new RegExp("^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$"), champVille, "villeMessage", "Votre ville est valide", "Veuillez vérifier la saisie de votre ville");
 
     if(validationNom && validationPrenom && validationEmail && validationAdresse && validationVille  == true){
-        alert("Paiement effectué.")
+        alert("Paiement accepté.");
         paiementForm.submit();
         
     }else{
-        e.preventDefault();
         alert("Veuilliez vérifier les champs que vous avez rentré.");
-        return false;
     }
     
     let contact = {
@@ -204,12 +202,9 @@ paiementForm.addEventListener('submit', async (e) => {
     console.log("envoieServeur");
     console.log(envoieServeur);
 
-        await sendPurchaseRequest(envoieServeur);
+    sendPurchaseRequest(envoieServeur);
         
 })
-
-
-// Récupération des valeurs pour les inscrire dans le LS
 
 const sendPurchaseRequest = async function (dataToSend) {
     console.log(dataToSend);
@@ -236,3 +231,7 @@ const sendPurchaseRequest = async function (dataToSend) {
         console.log(error);
     }
 }
+
+
+// Récupération des valeurs pour les inscrire dans le LS
+
