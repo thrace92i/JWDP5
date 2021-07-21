@@ -156,15 +156,10 @@ function validateInput(regex, input, idMessage, validMessage, invalidMessage){
 }
 
 
-// // ********* EVENEMENTS FORMULAIRES *********
-// paiementForm.addEventListener('change', function() {
-    
-// })
-
 
 paiementForm.addEventListener('submit', async (e) => {
 
-    const validationNom = validateInput(new RegExp("^[a-zA-Z '.-]*$", 'g'), champNom, 'messageNom', "Votre nom est valide", "Votre nom n'est pas valide");
+    const validationNom = validateInput(new RegExp("^([a-zA-Z]{2,}'?-?([a-zA-Z]{1,})?)", "g"), champNom, 'messageNom', "Votre nom est valide", "Votre nom n'est pas valide");
     const validationPrenom = validateInput(new RegExp("^[A-Z][A-Za-z\é\è\ê\-]+$", "g"), champPrenom, 'messagePrenom', "Votre prénom est valide","Votre prénom n'est pas valide");
     const validationEmail = validateInput(new RegExp('^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$', 'g'), champEmail, "emailMessage", "L'adresse email est valide", "L'adresse e-mail est non valide");
     const validationAdresse = validateInput(new RegExp('^(.){4,128}$', 'g'), champAdresse, "adresseMessage", "Votre adresse est valide", "Veuillez vérifier votre adresse");
